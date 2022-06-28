@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // let arr = [{ a: 100 }, { a: 20 }, { a: -10 }].reduce(
+    //   (acc, cur) => acc + cur.a,
+    //   0
+    // );
+    // console.log(arr);
+
+    // let str = 'jfasagsadasdadasdasda';
+    // let arr = str.split('');
+    // console.log(arr);
+
+    // let newArr = arr.reduce(function (allNames, name) {
+    //   if (name in allNames) {
+    //     allNames[name]++;
+    //   } else {
+    //     allNames[name] = 1;
+    //   }
+    //   return allNames;
+    // }, {});
+    // console.log(newArr);
+
+    let url = 'http://www.baidu.com?name=zhangsan&age=18&sex=nan#';
+    const process = (url) => {
+      const index1 = url.indexOf('?'),
+        index2 = url.indexOf('#'),
+        params = url.slice(index1 + 1, index2).split('&');
+      return params.reduce((pre, curr) => {
+        // [name,zhangsan]
+        // { name:zhangsan }
+        const [key, value] = curr.split('=');
+        pre[key] = value;
+        return pre;
+      }, {});
+    };
+
+    console.log(process(url));
+  </script>
+</html>
