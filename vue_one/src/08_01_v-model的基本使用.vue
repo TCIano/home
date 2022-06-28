@@ -6,11 +6,11 @@
          双向数据绑定
          value属性 - vue变量
        -->
-      <input type="text" >
+      <input type="text"  v-model="username">
     </div>
     <div>
       <span>密码: </span>
-      <input type="password">
+      <input type="password" v-model="password">
     </div>
   </div>
 </template>
@@ -19,7 +19,8 @@
 export default {
   data(){
     return {
-
+      username:'',
+      password:'',
     }
   }
 }
