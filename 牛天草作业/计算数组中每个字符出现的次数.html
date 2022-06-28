@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
+      let countEle = names.reduce((acculate, currentValue) => {
+        //把当前元素作为 累积元素的一个属性
+        //遍历数组元素，如果没有该属性，则让该属性值变为一，
+        //如果有该属性则让该属性值++
+        console.log(acculate);
+        console.log(currentValue);
+        if (acculate[currentValue]) {
+          acculate[currentValue]++;
+        } else {
+          acculate[currentValue] = 1;
+        }
+        return acculate;
+
+        //初始值为空对象，用来存储每次的累积
+      }, {});
+      console.log(countEle);
+    </script>
+  </body>
+</html>

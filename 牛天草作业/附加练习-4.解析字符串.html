@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let str = "http://www.baidu.com?uname=zhangsan&age=18&sex=nan#";
+      const getNeedStr = (url) => {
+        //截取字符串把没用的截取掉,截取到问号的位置
+        let qIndex = url.indexOf("?");
+        //找到#的索引
+        let jIndex = url.indexOf("#");
+        //根据？和#的位置把中间的字符串截取出来
+        let newUrl = url.substr(qIndex + 1, jIndex - qIndex - 1);
+        //把截取的新地址按照&分开为数组
+        let arr = newUrl.split("&");
+        //接收每一项
+        let newArr = [];
+        let obj = arr.reduce((acc, currentValue) => {
+          //把数组里每一项用=分开为数组
+          newArr = currentValue.split("=");
+          //把每次得到的数组，添加到累积对象元素
+          //把数组里第一个元素作为对象的属性，数组里二个元素作为对象里面的属性值
+          acc[newArr[0]] = newArr[1];
+          //   console.log(acc);
+          return acc;
+          //初始值为空对象存acc
+        }, {});
+        console.log(obj);
+      };
+      getNeedStr(str);
+    </script>
+  </body>
+</html>
