@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = 'asdfaasdfasdfasdfasdfasdfasdfasddf'
+        const arr1 = arr.split('')
+        console.log(arr1);
+        let countedNames = arr1.reduce(function (allNames, name) {
+            if(name in allNames) {
+                allNames[name]++
+            }
+            else {
+                allNames[name] = 1
+            }
+            return allNames
+        },{})
+        console.log(countedNames);
+    </script>
+</body>
+</html>
