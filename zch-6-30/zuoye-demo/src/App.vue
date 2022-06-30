@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <span>姓名:</span>
-      <input type="text" v-model.trim="nmame"/>
+      <input type="text" v-model.trim="name"/>
     </div>
     <div>
       <span>年龄:</span>
@@ -81,7 +81,7 @@ export default {
         id: this.arr[this.arr.length - 1].id + 1,
         name: this.name,
         age: this.age,
-        
+        sex: this.from.value,
       })
       // 清空输入的值
       this.name = ''
