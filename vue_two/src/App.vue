@@ -1,64 +1,39 @@
 <template>
-  <div id="app">
-   <!-- 语法1:
-      v-for="(值变量名, 索引变量名) in 目标结构"
-      口诀: 想要谁循环就放到谁身上
-     -->
-     <ul>
-      <li v-for="item in arr" :key="item">
-      {{item}}
-      </li>
-     </ul>
-     
-     <p>学生列表</p>
-      <ul>
-        <li v-for="(item,index) in stuArr" :key="index">
-        {{item.name}}---{{item.sex}}---{{item.hobby}}
-        </li>
-      </ul>
-      <p>老师信息</p>
-      <div>
-      </div>
-
-      <p v-for="(item,index) in count" :key="index">{{item}}</p>
-      <div>
-      </div>
+  <div>
+    <!-- 动态绑定class
+    v-bind:class = '{类名: 布尔值}'
+    :class="{类名: 布尔值}"
+    使用场景: vue变量控制标签是否应该有类名
+    v-bind:class 和 普通的class 是可以共存的-->
+    <p :class="{active:actived}" class="ppp">我是乒乒乓乓</p>
+    <button @click="btn" >Click ME</button>
   </div>
 </template>
 
 <script>
-
 export default {
-  data: function () {
+  name: 'VuecliDemo03Class',
+
+  data() {
     return {
-    arr: ["小明", "小欢欢", "大黄"],
-      stuArr: [
-        {
-          id: 1001,
-          name: "孙悟空",
-          sex: "男",
-          hobby: "吃桃子",
-        },
-        {
-          id: 1002,
-          name: "猪八戒",
-          sex: "男",
-          hobby: "背媳妇",
-        },
-      ],
-      tObj: {
-        name: "小黑",
-        age: 18,
-        class: "1期",
-      },
-      count: 10,
+      actived :true
     };
   },
+
+ 
+
+  methods: {
+    btn() {
+      this.actived = !this.actived
+    }
+  },
 };
-    
 </script>
-
-
-<style scoped>
-
+<style>
+  .active {
+    color: red;
+  }
+  .ppp{
+    border: 10px solid #ccc;
+  }
 </style>
