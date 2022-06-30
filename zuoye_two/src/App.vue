@@ -1,34 +1,37 @@
 <template>
   <div>
-    <p v-bind:class="{active:activeFlag}" class="ppp">我是胖胖胖</p>
-    <button @click = "activeFlag = !activeFlag">click me</button>
+    <h1>{{ obj.a }}</h1>
+    <button @click="change">改变</button>
+    <h1>{{ obj1 && obj1.a }}</h1>
+    <button @click="change1">改变</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'VuecliDemo03Class',
-
   data() {
     return {
-      activeFlag: true
+      obj: {
+        b: 10,
+        c: 12,
+      },
+      obj1: {},
     };
   },
-
-  mounted() {
-    
-  },
-
   methods: {
-    
-  },
-};
+    change(){
+      this.$set(this.obj,"a",10)
+      console.log("=====",this.obj);
+    },
+    change1() {
+      this.obj1 = {
+        a:10,
+      }
+    }
+  }
+}
 </script>
+
 <style>
-  .active {
-    color:red
-  }
-  .ppp{
-    border: 10px solid #ccc;
-  }
+
 </style>
