@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <p v-show="isShow">我是v-show指令</p>
+    <button @click="isShow = !isShow">click me show</button>
+    <br>
+
+    <p v-show="isIf">我是v-if指令</p>
+    <button @click="isIf = !isIf">click me if</button>
+    <br>
+
+    <p v-if="age >= 18">成年人</p>
+    <p v-else-if="age >= 12 && age <= 18">青少年</p>
+    <p v-else>儿童</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      isShow: false,
+      isIf: false,
+      age:17
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
