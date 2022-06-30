@@ -27,7 +27,7 @@
             <!-- 如果价格超过100，就有red这个类 -->
             <td :class="{red:item.price>100 }">{{item.price}}</td>
             <td>{{item.time}}</td>
-            <td><a href="#" >删除</a></td>
+            <td><a href="#" @click="delFn(item.id)">删除</a></td>
           </tr>
           <!-- <tr style="background-color: #EEE">
               <td>统计:</td>
@@ -105,6 +105,13 @@ export default {
         price:this.price,
         time:new Date()
       })
+    },
+    delFn(id) {
+      const index = this.list.findIndex(ele=> {
+        return ele.id === id
+      })
+      console.log(index);
+      this.list.splice(index, 1);
     }
     
   },
