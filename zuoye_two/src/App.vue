@@ -1,16 +1,18 @@
 <template>
-  <div>
-    <p v-show="isShow">我是v-show指令</p>
-    <button @click="isShow = !isShow">click me show</button>
-    <br>
-
-    <p v-show="isIf">我是v-if指令</p>
-    <button @click="isIf = !isIf">click me if</button>
-    <br>
-
-    <p v-if="age >= 18">成年人</p>
-    <p v-else-if="age >= 12 && age <= 18">青少年</p>
-    <p v-else>儿童</p>
+  <div id="app">
+    <h3>案例：折叠面板</h3>
+    <div class="title">
+      <h4>芙蓉楼送辛渐</h4>
+      <span class = "btn" @click="isShow = !isShow">
+        {{isShow ? "收起" : "展开"}}
+      </span>
+    </div>
+    <div class="container" v-show="isShow">
+        <p>寒雨连江夜入吴, </p>
+        <p>平明送客楚山孤。</p>
+        <p>洛阳亲友如相问，</p>
+        <p>一片冰心在玉壶。</p>
+    </div>
   </div>
 </template>
 
@@ -18,14 +20,45 @@
 export default {
   data() {
     return {
-      isShow: false,
-      isIf: false,
-      age:17
+      isShow: false
     }
-  }
+  },
 }
 </script>
 
-<style>
-
+<style lang="less">
+body {
+  background-color: #ccc;
+  #app {
+    width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 4px solid blueviolet;
+    border-radius: 1em;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    padding: 1em 2em 2em;
+    h3 {
+      text-align: center;
+    }
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ccc;
+      padding: 0 1em;
+    }
+    .title h4 {
+      line-height: 2;
+      margin: 0;
+    }
+    .container {
+      border: 1px solid #ccc;
+      padding: 0 1em;
+    }
+    .btn {
+      /* 鼠标改成手的形状 */
+      cursor: pointer;
+    }
+  }
+}
 </style>
