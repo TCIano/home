@@ -15,17 +15,36 @@
             const index1 = url.indexOf('?'),
                 index2 = url.indexOf('#'),
                 params = url.slice(index1 + 1, index2).split('&')
+                console.log(params);
+                // pre 完成计算的返回值
+                // curr 当前需要循环的元素
+
             return params.reduce((pre, curr) => {
                 // [name,zhangsan]
                 // { name:zhangsan } 
                 const [key, value] = curr.split('=')
-                pre[key] = value
+                console.log([key, value]);
+                pre[key] = value //这一步将数组里的值，变成对象
                 return pre
             }, {})
         }
 
         process(url)
         console.log(process(url));
+//         total(t)：累计器完成计算的返回值(必选)
+// value(v)：当前元素(必选)
+// index(i)：当前元素的索引(可选)
+// array(a)：当前元素所属的数组对象(可选)
+
+
+// 过程
+
+// 以t作为累计结果的初始值，不设置t则以数组第一个元素为初始值
+// 开始遍历，使用累计器处理v，将v的映射结果累计到t上，结束此次循环，返回t
+// 进入下一次循环，重复上述操作，直至数组最后一个元素
+// 结束遍历，返回最终的t
+
+
     </script>
 </body>
 
