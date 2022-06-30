@@ -2,8 +2,8 @@
   <div>
     <ul>
       <li
-        v-for="(item,index) in navs" :key="index" 
-        :class="{ active: index === currentIndex}"
+        v-for="(item,index) in navs" :key="index"
+        :class="{active:currentIndex === index}"
         @click="btn(index)"
       >
       {{item}}
@@ -24,8 +24,8 @@ export default {
 
   methods: {
     btn(val) {
-      console.log(val);
-      this.currentIndex = val
+      //把val 也就是inedx 赋值给current  让他点击时同步index和current 从而达到 true ,实现点谁谁高亮
+      this.currentIndex =val
     }
   },
 };
