@@ -4,7 +4,7 @@
   <br>
   <span>国外网站：粉丝数量：{{fans | format3}} 千</span>
   <p>时间：{{times | format}}</p>
-  <p>时间：{{times | format}}</p>
+  <p>时间：{{times | format4}}</p>
   </div>
 </template>
 
@@ -21,6 +21,9 @@ name: 'App',
    filters: {
     format(val){
         return moment(val).format("YYYY-MM-DD HH:mm:ss")
+    },
+        format4(val){
+        return moment(val).format("YYYY/MM/DD HH:mm:ss")
     },
     // 转换成单位 千
     // format1(val) {
