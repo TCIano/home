@@ -62,25 +62,27 @@ export default {
       name: "",
       age: "",
       sex: 0, // 1男 0女
-      isEdit: false, //设置显示的默认值
+      isEdit: false, //
       currentId: "",//里面存储编辑里的ID
     };
   },
   methods: {
     addFn() {
       if(this.isEdit) {
-        const index = this.list.findIndex(ele=>{
-          return ele.id == this.currentId
-        })
+        // 说明处于编辑状态
+        // 改完之后的数据保存进去
+        // 当前这个数据的id
+        const index = this.list.findIndex((ele) => ele.id == this.currentId);
         console.log(index);
-        this.list[index].name = this.name
+        // 把修改了的名字 赋值给当前索引号的name，修改索引号里的值
+        this.list[index].name = this.name;
         this.list[index].age = this.age;
         this.list[index].sex = this.sex;
-        this.currentId = ''
-        this.isEdit = false
-        this.clearFn()
-        alert('修改完成')
-        return
+        this.currentId = "";
+        this.isEdit = false; //再次便会添加
+        this.clearFn();
+        alert("修改完成");
+        return 
       }
       if(this.name=='' || this.age =='') {
         return alert("Please enter")
@@ -96,16 +98,14 @@ export default {
       alert("添加完成");
     },
     editFn(data) {
-      this.isEdit = true;
+      this.isEdit=true
       console.log(data);
-      this.name = data.name;
+      this.name=data.name
       this.age = data.age;
       this.sex = data.sex;
-      this.currentId = data.id
-      
+      // 当前这个数据的id 要保存下来
+      this.currentId = data.id;
     },
-
-
     clearFn() {
       this.name = "";
       this.age = "";
