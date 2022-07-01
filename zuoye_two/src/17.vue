@@ -2,7 +2,12 @@
   <div class="wrap">
     <div class="nav_left" id="navLeft">
       <div class="nav_content">
-        <span :class="{active: isSlecIndex == index}" v-for="(obj, index) in arr" :key="obj.first_id" @click="changeTab(index)">{{obj.first_name}}</span>
+        <span 
+        :class="{active: isSlecIndex == index}" 
+        v-for="(obj, index) in arr" 
+        :key="obj.first_id" 
+        @click="changeTab(index)"
+        >{{obj.first_name}}</span>
       </div>
     </div>
     <div class="down">
