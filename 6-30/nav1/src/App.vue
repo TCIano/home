@@ -2,21 +2,21 @@
   <div id="app">
     <div>
       <span>姓名:</span>
-      <input type="text" v-model.trim="uname" />
+      <input type="text" v-model.trim="uname" placeholder="请输入姓名" />
     </div>
     <div>
       <span>年龄:</span>
-      <input type="number" v-model.number="age" />
+      <input type="number" v-model.trim="age" placeholder="请输入年龄" />
     </div>
     <div>
       <span>性别:</span>
       <select v-model="gender">
-        <option value="男">男</option>
-        <option value="女">女</option>
+        <option :value="1">男</option>
+        <option :value="0">女</option>
       </select>
     </div>
     <div>
-      <button @click="add(editIndex)">添加/修改</button>
+      <button @click="add(editIndex)">{{isEdit?'修改':'添加'}}</button>
     </div>
     <div>
       <table border="1" cellpadding="10" cellspacing="0">
@@ -28,10 +28,10 @@
           <th>操作</th>
         </tr>
         <tr v-for="(item,index) in arr" :key="index">
-          <td>{{index +1}}</td>
+          <td>{{index + 1}}</td>
           <td>{{item.uname}}</td>
           <td>{{item.age}}</td>
-          <td>{{item.gender}}</td>
+          <td>{{{0:'女',1:'男'}[item.gender]}}</td>
           <td>
             <button @click="del(index)">删除</button>
             <button @click="edit(item,index)">编辑</button>
@@ -46,18 +46,22 @@ export default {
   data() {
     return {
       //当前编辑行的索引
-      editIndex: null,
+      editIndex: null, //用来保存点击编辑时候获取的索引
+      isEdit: false, //用来改变添加修改功能
       uname: '',
       age: '',
-      gender: '',
+      gender: 0,
       arr: [],
     }
   },
   methods: {
     add(index) {
-      //如果当前编辑行索引不为空，那就根据索引修改当前行，
-      // 把输入框内容赋值给当前数组元素
-      if (index !== null) {
+      if (this.uname == '' || this.age == '') {
+        return alert('请输入')
+      }
+      if (this.isEdit == true) {
+        //如果当前编辑行索引不为空，那就根据索引修改当前行，
+        // 把输入框内容赋值给当前数组元素
         // this.$set(this.arr, index, {
         //   uname: this.uname,
         //   age: this.age,
@@ -66,6 +70,7 @@ export default {
         this.arr[index].uname = this.uname
         this.arr[index].age = this.age
         this.arr[index].gender = this.gender
+        //把信息索引置空
         this.editIndex = null
       } else {
         this.arr.push({
@@ -74,10 +79,9 @@ export default {
           gender: this.gender,
         })
       }
-
       this.uname = ''
       this.age = ''
-      this.gender = ''
+      this.gender = 0
     },
     del(index) {
       this.arr.splice(index, 1)
@@ -89,6 +93,8 @@ export default {
       this.uname = item.uname
       this.age = item.age
       this.gender = item.gender
+      //改变按钮内容
+      this.isEdit = true
     },
   },
 }
