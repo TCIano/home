@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let o = {
+        name: "zd",
+        age: 78,
+        other: {
+          hobby: ["摸鱼", "玩耍"],
+          work: {
+            git: 12,
+            node: true,
+          },
+        },
+        fn: function () {},
+      };
+      let obj = {};
+      //   const _completeDeepClone = (target, newObj) => {
+      //     // 补全代码
+      //     for (let k in target) {
+      //       //如果其中一项 内容为对象那么继续遍历内部的元素
+      //       if (target[k] instanceof Object) {
+      //         newObj[k] = {};
+      //         //继续拷贝内层元素
+      //         _completeDeepClone(target[k], newObj[k]);
+      //       } else if (target[k] instanceof Array) {
+      //         newObj[k] = [];
+      //         _completeDeepClone(target[k], newObj[k]);
+      //       } else {
+      //         //如果为简单数据类型那么就直接拷贝
+      //         newObj[k] = target[k];
+      //       }
+      //     }
+      //   };
+      //   _completeDeepClone(o, obj);
+      //   console.log(o);
+
+      //   //   o.other.hobby = "12";
+      //   console.log(obj);
+      //深拷贝;
+      function deepCopy(newObj, oldObj) {
+        for (var k in oldObj) {
+          //   console.log(oldObj[k]);
+          //如果旧元素里面的元素是对象
+          if (oldObj[k] instanceof Array) {
+            newObj[k] = [];
+            //再遍历对象，里面的元素，对里面元素进行判断
+            deepCopy(newObj[k], oldObj[k]);
+          }
+          //如果里面的元素是数组
+          else if (oldObj[k] instanceof Object) {
+            //把新元素开辟一个数组空间用来存放旧元素
+            newObj[k] = {};
+            deepCopy(newObj[k], oldObj[k]);
+          }
+          //如果是简单数类型
+          else {
+            newObj[k] = oldObj[k];
+          }
+        }
+      }
+      deepCopy(obj, o);
+      //   o.color[0] = "green";
+      //   o.msg.age = 666;
+      console.log(o);
+      console.log(obj);
+    </script>
+  </body>
+</html>
