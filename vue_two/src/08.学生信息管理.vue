@@ -2,28 +2,24 @@
   <div id="app">
     <div>
       <span>姓名:</span>
-      <input type="text" v-model.trim="name"/>
+      <input type="text" placeholder="请输入姓名" v-model.trim="name" />
     </div>
     <div>
       <span>年龄:</span>
-      <input type="number" v-model.trim="age"/>
+      <input type="number" placeholder="请输入年龄" v-model.trim="age" />
     </div>
     <div>
       <span>性别:</span>
       <select v-model="sex">
-        <option value="男">男</option>
-        <option value="女">女</option>
+        <option :value="1">男</option>
+        <option :value="0">女</option>
       </select>
     </div>
     <div>
-      <button @click="addFn()">添加/修改</button>
+      <button @click="addFn" >{{ isEdit ? '修改' :'添加'}}</button>
     </div>
     <div>
-      <table
-        border="1"
-        cellpadding="10"
-        cellspacing="0"
-      >
+      <table border="1" cellpadding="10" cellspacing="0">
         <tr>
           <th>序号</th>
           <th>姓名</th>
@@ -31,14 +27,14 @@
           <th>性别</th>
           <th>操作</th>
         </tr>
-        <tr v-for="item in arr" :key="item.id">
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.age}}</td>
-          <td>{{item.sex}}</td>
+        <tr v-for="item in list" :key="item.id">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.age }}</td>
+          <td>{{ { 0: "女", 1: "男" }[item.sex] }}</td>
           <td>
-            <button @click="delFn(item.id)">删除</button>
-            <button >编辑</button>
+            <button>删除</button>
+            <button @click="editFn(item)">编辑</button>
           </td>
         </tr>
       </table>
@@ -49,50 +45,72 @@
 export default {
   data() {
     return {
-      sex:'',
-      age:'',
-      name:'',
-      arr:[
+      list: [
         {
-        id:1,
-        name:'zs',
-        age: 18,
-        sex:'男'
-      },
-      {
-        id:2,
-        name:'ls',
-        age: 19,
-        sex:'男'
-      },{
-        id:3,
-        name:'ww',
-        age: 17,
-        sex:'男'
-      }
-      ]
-    }
+          id: 100,
+          age: 18,
+          name: "章三",
+          sex: 1, // 1男 0女
+        },
+        {
+          id: 101,
+          age: 18,
+          name: "章三三",
+          sex: 0, // 1男 0女
+        },
+      ],
+      name: "",
+      age: "",
+      sex: 0, // 1男 0女
+      isEdit: false, //
+      currentId: "",//里面存储编辑里的ID
+    };
   },
   methods: {
     addFn() {
-      // console.log(this.name);
-      if(this.name=='' || this.age==''||this.sex=='') {
-          return alert("Please enter")
-        }
-       this.arr.push({
-        id:this.arr[this.arr.length - 1].id+1,
+      if(this.isEdit) {
+        // 说明处于编辑状态
+        // 改完之后的数据保存进去
+        // 当前这个数据的id
+        const index = this.list.findIndex((ele) => ele.id == this.currentId);
+        console.log(index);
+        // 把修改了的名字 赋值给当前索引号的name，修改索引号里的值
+        this.list[index].name = this.name;
+        this.list[index].age = this.age;
+        this.list[index].sex = this.sex;
+        this.currentId = "";
+        this.isEdit = false; //再次便会添加
+        this.clearFn();
+        alert("修改完成");
+        return 
+      }
+      if(this.name=='' || this.age =='') {
+        return alert("Please enter")
+      }
+      const id = this.list[this.list.length - 1] ? this.list[this.list.length - 1].id +1 : 0
+      this.list.push({
+        id,
         name:this.name,
         age:this.age,
-        sex:this.sex,
+        sex:this.sex
       })
+      this.clearFn()
+      alert("添加完成");
     },
-    delFn(id) {
-      const inedx = this.arr.findIndex(ele=>{
-        return ele.id == id
-      })
-      console.log(inedx);
-      this.arr.splice(inedx, 1);
-    }
+    editFn(data) {
+      this.isEdit=true
+      console.log(data);
+      this.name=data.name
+      this.age = data.age;
+      this.sex = data.sex;
+      // 当前这个数据的id 要保存下来
+      this.currentId = data.id;
+    },
+    clearFn() {
+      this.name = "";
+      this.age = "";
+      this.sex = 0;
+    },
   },
-}
+};
 </script>
