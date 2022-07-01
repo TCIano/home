@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // instanceof 的内部实现 
+function instance_of(L, R) {//L 表左表达式，R 表示右表达式，即L为变量，R为类型
+  // 取 R 的显示原型
+  var prototype = R.prototype
+  // 取 L 的隐式原型
+  L = L.__proto__
+  // 判断对象（L）的原型是否严格等于类型（R）的显式原型
+  while (true) { 
+    if (L === null) {
+      return false
+    }
+   
+    // 这里重点：当 prototype 严格等于 L 时，返回 true
+    if (prototype === L) {
+      return true
+    } 
+ 
+    L = L.__proto__
+  } 
+//   1.L 表左表达式，R 表示右表达式，即L为变量，R为类型
+// 2.取 R 的显示原型      取 L 的隐式原型
+// 3.判断对象（L）的原型是否严格等于类型（R）的显式原型
+// 4.这里重点：当 prototype 严格等于 L 时，返回 true
+
+}
+    </script>
+</body>
+</html>
