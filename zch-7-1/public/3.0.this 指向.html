@@ -14,22 +14,21 @@ const obj = {
   name: "test",
 
   a() {
-    console.log(this.a);
+    console.log(this.a);  // 2.this.a 指向obj里面的方法a(){} 输出对象obj 里面的属性a
     setTimeout(function () {
-      console.log(this.a);
+      console.log(this.a);  // 3. 定时器的调用者是 a 
     }, 1000);
   },
 
   b() {
-    console.log(this);
-    fn();
+    console.log(this);  // 5.this 指向 obj 输出 {name: 'test', a: ƒ, b: ƒ}
+    fn(); // 6.只有调用，没有函数体。 这会报错
   },
 
 };
 
-
-obj.a();
-obj.b();
+obj.a(); // 1.调用方法a()
+obj.b(); // 4.调用方法b()
 // 
 </script>
 </html>
