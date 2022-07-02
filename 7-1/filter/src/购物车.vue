@@ -56,7 +56,7 @@
           <!-- 头部全选模块 -->
           <div class="cart-thead">
             <div class="t-checkbox">
-              <input type="checkbox" name="" id="" class="checkall"> 全选
+              <input type="checkbox" name="" id="" class="checkall" v-model="checkall"> 全选
             </div>
             <div class="t-goods">商品</div>
             <div class="t-price">单价</div>
@@ -68,7 +68,7 @@
           <div class="cart-item-list">
             <div class="cart-item check-cart-item">
               <div class="p-checkbox">
-                <input type="checkbox" name="" id="" checked class="j-checkbox">
+                <input type="checkbox" name="" id="" checked class="j-checkbox" v-model="check">
               </div>
               <div class="p-goods">
                 <div class="p-img">
@@ -89,7 +89,7 @@
             </div>
             <div class="cart-item">
               <div class="p-checkbox">
-                <input type="checkbox" name="" id="" class="j-checkbox">
+                <input type="checkbox" name="" id="" class="j-checkbox" v-model="check">
               </div>
               <div class="p-goods">
                 <div class="p-img">
@@ -110,7 +110,7 @@
             </div>
             <div class="cart-item">
               <div class="p-checkbox">
-                <input type="checkbox" name="" id="" class="j-checkbox">
+                <input type="checkbox" name="" id="" class="j-checkbox" v-model="check">
               </div>
               <div class="p-goods">
                 <div class="p-img">
@@ -134,7 +134,7 @@
           <!-- 结算模块 -->
           <div class="cart-floatbar">
             <div class="select-all">
-              <input type="checkbox" name="" id="" class="checkall">全选
+              <input type="checkbox" name="" id="" class="checkall" v-model="checkall">全选
             </div>
             <div class="operation">
               <a href="javascript:;" class="remove-batch"> 删除选中的商品</a>
@@ -270,7 +270,10 @@ export default {
   props: [],
   components: {},
   data() {
-    return {}
+    return {
+      checkall: '',
+      check: '',
+    }
   },
   methods: {},
   created() {},
