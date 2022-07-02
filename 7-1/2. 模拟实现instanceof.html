@@ -8,9 +8,29 @@
   </head>
   <body>
     <script type="text/javascript">
+      //判断实例对象是否可以根据原型链找到对应的构造函数的原型对象
       const _instanceof = (target, Fn) => {
         // 补全代码
+        let targetProto = target.__proto__;
+        let fnProto = Fn.prototype;
+        console.log(targetProto, fnProto);
+        while (true) {
+          if (targetProto == fnProto) {
+            return true;
+          }
+          if (targetProto == null) {
+            return false;
+          }
+          targetProto = targetProto.__proto__;
+        }
       };
+      let arr = new Array();
+      str = "";
+      // console.log(arr);
+      console.dir(arr);
+      console.log(arr instanceof Array, _instanceof(arr, Array));
+      console.log(str instanceof Array, _instanceof(str, Array));
+      console.log(arr instanceof Object, _instanceof(arr, Object));
     </script>
   </body>
 </html>

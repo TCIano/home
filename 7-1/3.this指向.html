@@ -8,6 +8,10 @@
   </head>
   <body>
     <script>
+      fn();
+      function fn() {
+        console.log(this);
+      }
       const obj = {
         name: "test",
         a() {
@@ -18,7 +22,7 @@
         },
         b() {
           console.log(this);
-          //   fn();
+          fn();
         },
       };
       obj.a();

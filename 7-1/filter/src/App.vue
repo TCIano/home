@@ -101,15 +101,24 @@ export default {
       console.log(this.check)
       //用来保存过滤出来的元素
       let arr = []
-      for (let i = 0; i < this.check.length; i++) {
-        arr = this.list.filter((item) => {
-          // console.log(item.id)
-          console.log(this.check[i])
-          return item.id !== this.check[i]
-        })
-        console.log(arr)
+      // for (let i = 0; i < this.check.length; i++) {
+      //   arr = this.list.filter((item) => {
+      //     // console.log(item.id)
+      //     console.log(this.check[i])
+      //     return item.id !== this.check[i]
+      //   })
+      //   console.log(arr)
+      // }
+      //匹配选中的数组和原来数据里面id，如果匹配不到说明，数组里的这个元素没有被选中，
+      // 那么就把这个没选中的元素重新渲染到原数组里，相当于删除了选中元素。
+      for (let i = 0; i < this.list.length; i++) {
+        if (this.check.indexOf(this.list[i].id) == -1) {
+          // console.log(this.check.indexOf(i))
+          arr.push(this.list[i])
+        }
       }
       this.list = arr
+      this.check = []
     },
   },
   computed: {
@@ -122,7 +131,7 @@ export default {
   },
   watch: {
     check() {
-      if (this.check.length == this.list.length) {
+      if (this.check.length == this.list.length && this.list.length !== 0) {
         this.checkAll = true
       } else {
         this.checkAll = false
