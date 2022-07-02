@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function deepClone(obj) {
+      let objClone = Array.isArray(obj) ? [] : {};
+      if (obj && typeof obj === 'object') {
+        for (key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            if (obj[key] && typeof obj[key] === 'object') {
+              objClone[key] = deepClone(obj[key]);
+            } else {
+              objClone[key] = obj[key];
+            }
+          }
+        }
+      }
+      return objClone;
+    }
+    let o = {
+      name: 'zd',
+      age: 78,
+      other: {
+        hobby: ['摸鱼', '玩耍'],
+        work: {
+          git: 12,
+          node: true,
+        },
+      },
+    };
+    let b = deepClone(o);
+    o[0] = { a: 1 };
+    console.log(o, b);
+
+    // function deepClone(obj) {
+    //   let objClone = Array.isArray(obj) ? [] : {};
+    //   if (obj && typeof obj === 'object') {
+    //     for (key in obj) {
+    //       if (obj.hasOwnProperty(key)) {
+    //         if (obj[key] && typeof obj[key] === 'object') {
+    //           objClone[key] = deepClone(obj[key]);
+    //         } else {
+    //           objClone[key] = obj[key];
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    // function deepClone(obj) {
+    //   let objClone = Array.isArray(obj) ? [] : {};
+    //   if (obj && typeof obj === 'object') {
+    //     for (key in obj) {
+    //       if (obj.hasOwnProperty(key)) {
+    //         if (obj[key] && typeof obj[key] === 'object') {
+    //           objClone[key] = deepClone(obj[key]);
+    //         } else {
+    //           objClone[key] = obj[key];
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    function deepClone(obj) {
+      let objClone = Array.isArray(obj) ? [] : {};
+      if (obj && typeof obj === 'bject') {
+        for (key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            if (obj[key] && typeof obj[key] === 'object') {
+              objClone[key] = deepClone(obj[key]);
+            } else {
+              objClone[key] = obj[key];
+            }
+          }
+        }
+      }
+    }
+  </script>
+</html>
