@@ -15,7 +15,7 @@
         <td>{{item.name}}</td>
         <td>{{item.price}}</td>
         <td>
-        <span @click="item.count--">-</span>
+        <span @click="item.count <=0 ? 0 : item.count--">-</span>
           <input type="text" v-model="item.count" />
           <span @click="item.count++">+</span>
         </td>
@@ -53,11 +53,13 @@ export default {
     };
   },
   methods: {
+    //点击删除按钮，删除
     delFn(id) {
         const index = this.list.findIndex(item=>item.id == id);
         console.log(index);
         this.list.splice(index, 1);
     },
+    //删除已经选中的
     dell() {
       //实现选中状态复选框 删除
      this.list  = this.list.filter(item=> {
@@ -65,15 +67,16 @@ export default {
       })
       console.log(arr);
     },
+    //清空购物车
     delCar() {
-
+      this.list=[]
     }
     
     
 
   },
   computed: {
-   
+    //总价
     allPrice() {
       return this.list
         .reduce((sum, next) => {
@@ -81,12 +84,14 @@ export default {
         }, 0)
         .toFixed(2);
     },
+    // 总数量
     allCount() {
       return this.list
         .reduce((sum, next) => {
           return (sum += +next.count);
         }, 0)
     },
+    //完成全选和小选
     isAll:{
         set(val) {
             console.log(val);
