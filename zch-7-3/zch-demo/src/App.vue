@@ -3,7 +3,8 @@
     <!-- 除了驼峰, 还可以使用-转换链接 -->
     <TodoHeader @create="createFn"></TodoHeader>
     <TodoMain :list="list" @del="deleteFn"></TodoMain>
-    <TodoFooter :count="count"></TodoFooter>
+    <TodoFooter :count="count"
+    @fliterdata="fliterdataFn"></TodoFooter>
   </section>
 </template>
 
@@ -14,6 +15,7 @@ import TodoMain from "./components/TodoMain";
 import TodoFooter from "./components/TodoFooter";
 
 
+
 export default {
   data() {
     return {
@@ -22,6 +24,7 @@ export default {
         { id: 101, name: "睡觉", isDone: false },
         { id: 102, name: "打豆豆", isDone: true },
       ],
+      getSel: "all",
     }
   },
   components: {
@@ -42,12 +45,24 @@ export default {
     deleteFn(id){
       const index = this.list.findIndex(ele => ele.id === id)
       this.list.splice(index, 1)
+    },
+    fliterdataFn(val){
+      this.getSel = val
     }
   },
   computed: {
     count(){
       return this.list.filter((ele) => !ele.isDone).length;
+    },
+    showArr(){
+      if(this.getSel == "no"){
+        return this.list.filter((ele) => !ele.isDone)
+      }else if(this.getSel == "yes"){
+        return this.list.filter((ele) => ele.isDone)
+    }else{
+      return this.list;
     }
   }
-};
+}
+}
 </script>

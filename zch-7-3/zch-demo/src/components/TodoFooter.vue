@@ -35,6 +35,12 @@ export default {
         }
     },
     props: ['count'],
+    methods: {
+        change(val){
+            this.isSel = val
+            this.$emit('fliterdata', val)
+        },
+    }
 
 }
 </script>
