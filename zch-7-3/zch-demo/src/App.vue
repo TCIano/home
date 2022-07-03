@@ -1,8 +1,8 @@
 <template>
   <section class="todoapp">
     <!-- 除了驼峰, 还可以使用-转换链接 -->
-    <TodoHeader ></TodoHeader>
-    <TodoMain :list="list"></TodoMain>
+    <TodoHeader @create="createFn"></TodoHeader>
+    <TodoMain :list="list" @del="deleteFn"></TodoMain>
     <TodoFooter></TodoFooter>
   </section>
 </template>
@@ -29,5 +29,20 @@ export default {
     TodoMain,
     TodoFooter,
   },
+  methods: {
+    createFn(val){
+      const id = this.list[this.list.length - 1] ? 
+      this.list[this.list.length - 1].id + 1 : 100
+      this.list.push({
+        id,
+        name: val,
+        isDone: false,
+      })
+    },
+    deleteFn(id){
+      const index = this.list.findIndex(ele => ele.id === id)
+      this.list.splice(index, 1)
+    }
+  }
 };
 </script>

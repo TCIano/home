@@ -18,6 +18,11 @@
 
 <script>
 export default {
-    props: ["list"]
+    props: ["list"],
+    methods: {
+        delFn(id){
+            this.$emit('del', id)
+        }
+    }
 }
 </script>
