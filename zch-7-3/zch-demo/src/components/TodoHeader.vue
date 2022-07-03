@@ -4,7 +4,7 @@
     <input id="toggle-all" 
     class="toggle-all" 
     type="checkbox" 
-    
+    v-model="isAll"
     >
     <label for="toggle-all"></label> 
     <!-- label 可以关联一个表单标签 -->
@@ -33,6 +33,19 @@ export default {
         }
         this.$emit("create", this.task)
         this.task = ""
+    }
+ },
+ computed: {
+    isAll: {
+        get(){
+            return this.$parent.list.every((ele)=> ele.isDone)
+        },
+        set(checked){
+            // 子到父
+            this.$emit('setchecked', checked)
+            // 在子组件  直接改父组件里面的值
+        // this.$parent.list.forEach((ele) => (ele.isDone = checked))
+        }
     }
  }
 }

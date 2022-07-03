@@ -1,7 +1,7 @@
 <template>
   <section class="todoapp">
     <!-- 除了驼峰, 还可以使用-转换链接 -->
-    <TodoHeader @create="createFn"></TodoHeader>
+    <TodoHeader @create="createFn" @setchecked="setcheckedFn"></TodoHeader>
     <TodoMain :list="list" @del="deleteFn"></TodoMain>
     <TodoFooter :count="count"
     @fliterdata="fliterdataFn"
@@ -53,6 +53,9 @@ export default {
     },
     clearFn(){
       this.list.forEach((ele) => (ele.isDone = false))
+    },
+    setcheckedFn(val){
+      this.list.forEach((ele) => (ele.isDone = val))
     }
   },
   computed: {
