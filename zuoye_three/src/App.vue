@@ -2,7 +2,7 @@
   <div id="app">
     <table class="tb">
       <tr>
-        <th><input type="checkbox" />全选</th>
+        <th><input type="checkbox" v-model="isAll"/>全选</th>
         <th>商品</th>
         <th>单价</th>
         <th>数量</th>
@@ -11,7 +11,7 @@
       </tr>
       <!-- 循环渲染的元素tr -->
       <tr v-for ="item in list" :key="item.id">
-        <td><input type="checkbox" /></td>
+        <td><input type="checkbox" v-model="item.c"/></td>
         <td>{{item.name}}</td>
         <td>{{item.price}}</td>
         <td><span @click="minusFn(item.id)">-</span><input type="text" v-model="item.count"/><span @click="addFn(item.id)">+</span></td>
@@ -24,7 +24,7 @@
       </tr>
     </table>
     <br />
-    <button>删除选中商品</button>
+    <button @click="del">删除选中商品</button>
     <button>清理购物车</button>
     <br />
     <div style="margin-top: 20px">
@@ -40,9 +40,9 @@ export default {
   data() {
     return {
       list: [
-        { id: 1, name: "奔驰", price: "999", count:1 },
-        { id: 2, name: "宝马", price: "1000", count:2 },
-        { id: 3, name: "奥迪", price: "1999", count:3 },
+        { id: 1, name: "奔驰", price: "999", count:1, c:false},
+        { id: 2, name: "宝马", price: "1000", count:2, c:false },
+        { id: 3, name: "奥迪", price: "1999", count:3, c:false },
       ],
     //   num:'1'
     };
@@ -57,7 +57,6 @@ export default {
         this.list[index].count++
     },
     minusFn(val) {
-        
         const index = this.list.findIndex((ele) => ele.id == val)
         this.list[index].count--
     } 
@@ -69,7 +68,14 @@ export default {
     allCount() {
         return this.list.reduce((count, next) => (count += +next.count), 0)
     },
-    
+    isAll:{
+      set(val) {
+        this.list.forEach(item => item.c = val)
+      },
+      get() {
+        return this.list.every(item => item.c)
+      }
+    }
   }
 };
 </script>
