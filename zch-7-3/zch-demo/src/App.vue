@@ -3,7 +3,7 @@
     <!-- 除了驼峰, 还可以使用-转换链接 -->
     <TodoHeader @create="createFn"></TodoHeader>
     <TodoMain :list="list" @del="deleteFn"></TodoMain>
-    <TodoFooter></TodoFooter>
+    <TodoFooter :count="count"></TodoFooter>
   </section>
 </template>
 
@@ -42,6 +42,11 @@ export default {
     deleteFn(id){
       const index = this.list.findIndex(ele => ele.id === id)
       this.list.splice(index, 1)
+    }
+  },
+  computed: {
+    count(){
+      return this.list.filter((ele) => !ele.isDone).length;
     }
   }
 };
