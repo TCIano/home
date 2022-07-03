@@ -23,7 +23,7 @@
         已完成</a>
       </li>
     </ul>
-    <button class="clear-completed" >清除已完成</button>
+    <button class="clear-completed" @click="clear">清除已完成</button>
   </footer>
 </template>
 
@@ -40,6 +40,9 @@ export default {
             this.isSel = val
             this.$emit('fliterdata', val)
         },
+        clear() {
+            this.$emit('clear')
+        }
     }
 
 }

@@ -4,7 +4,8 @@
     <TodoHeader @create="createFn"></TodoHeader>
     <TodoMain :list="list" @del="deleteFn"></TodoMain>
     <TodoFooter :count="count"
-    @fliterdata="fliterdataFn"></TodoFooter>
+    @fliterdata="fliterdataFn"
+    @clear="clearFn"></TodoFooter>
   </section>
 </template>
 
@@ -48,6 +49,9 @@ export default {
     },
     fliterdataFn(val){
       this.getSel = val
+    },
+    clearFn(){
+      this.list.forEach((ele) => (ele.isDone = false))
     }
   },
   computed: {
