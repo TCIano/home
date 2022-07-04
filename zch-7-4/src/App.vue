@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div>
+<SearchBook></SearchBook>
+<BodyBook></BodyBook>
+<AddBook></AddBook>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import SearchBook from './components/SearchBook.vue'
+import BodyBook from './components/BodyBook.vue'
+import AddBook from './components/AddBook.vue'
+  export default {
+    data(){
+      return {}
+    },
+    components: {
+      SearchBook,
+      BodyBook,
+      AddBook,
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+
 </style>
