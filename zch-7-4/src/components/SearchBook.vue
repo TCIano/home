@@ -4,7 +4,7 @@
       type="text"
       placeholder="搜索-书本名称"
       v-model="bookname"
-      @keydown.enter="findBook"
+      @keydown.enter="find"
     />
   </div>
 </template>
@@ -23,16 +23,9 @@ export default {
     }
   },
   methods: {
-    findBook() {
-      this.$axios({
-        url: '/api/getbooks',
-        params: {
-          bookname: this.bookname,
-        },
-      }).then((res) => {
-        console.log(res)
-      })
-    },
+      find(){
+        this.$emit("find")
+      }
   },
 }
 </script>

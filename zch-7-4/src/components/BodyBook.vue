@@ -16,26 +16,36 @@
         <td>{{item.author}}</td>
         <td>{{item.publisher}}</td>
         <td>
-            <a href=""><button>删除</button><button>详情</button></a>
+            <a href="" @click="delFn(item.id)">删除</a> <a href="" @click="detail(item.id)">详情</a>
         </td>
       </tr>
     </tbody>
+    <tfoot v-if="list.length <= 0">
+          <tr>
+            <td>暂无数据</td>
+          </tr>
+    </tfoot>
   </table>
 </template>
 
 <script>
 export default {
     data(){
-        return{
-            list: []
-        }
+        return{}
     },
-    mounted() {
-        this.$axios({
-            url: '/api/getbooks',
-        }).then((res) => {
-            this.list = res.data.data
-        })
+    props: {
+      list: {
+        type: Array,
+        default: () => [],
+      }
+    },
+    methods: {
+      del(id){
+        this.$emit("del", id)
+      },
+      detail(id){
+        this.$emit("detail", id)
+      }
     }
 }
 </script>
