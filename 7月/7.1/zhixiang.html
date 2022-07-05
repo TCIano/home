@@ -8,16 +8,19 @@
   </head>
   <body></body>
   <script>
+    function fn() {
+      console.log(this);//windw
+    }
     const obj = {
       name: 'test',
       a() {
-        console.log(this.a);//指向a
+        console.log(this.a);//对象a
         setTimeout(function () {
-          console.log(this.a);
+          console.log(this.a);//underfind
         }, 1000);
       },
       b() {
-        console.log(this);//指向函数
+        console.log(this);//obj
         fn();
       },
     };
