@@ -40,6 +40,27 @@ export default {
       this.list = res.data.data;
     });
   },
+  methods: {
+    delFn(id) {
+      this.$axios({
+        url: "/api/delbook",
+        params: { id },
+      }).then(() => {
+        this.getList();
+      });
+    },
+    detailFn(id) {
+      this.$axios({
+        url: "/api/getbooks",
+        params: { id },
+      }).then((res) => {
+        const item = res.data.data && res.data.data[0];
+        alert(
+          `作者：${item.author}; 出版社：${item.publisher}; 书名：${item.bookname}`
+        );
+      });
+    },
+  },
 };
 </script>
 

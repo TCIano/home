@@ -11,6 +11,7 @@
 export default {
   data() {
     return {
+      list: [],
       bookObj: {
         // 参数名提前和后台的参数名对上-发送请求就不用再次对接了
         bookname: "",
@@ -28,7 +29,10 @@ export default {
           bookname: this.bookname,
         },
       }).then((res) => {
-        console.log(res);
+        const item = res.data.data && res.data.data[0];
+        alert(
+          `作者：${item.author}; 出版社：${item.publisher}; 书名：${item.bookname}`
+        );
       });
     },
   },

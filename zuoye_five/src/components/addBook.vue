@@ -3,7 +3,7 @@
     <input type="text" placeholder="书名" v-model="bookObj.bookname" /><br />
     <input type="text" placeholder="作者" v-model="bookObj.author" /><br />
     <input type="text" placeholder="出版社" v-model="bookObj.publisher" /><br />
-    <button @click="addBook">新增</button>
+    <button @click="addFn">新增</button>
   </div>
 </template>
 
@@ -12,24 +12,41 @@ export default {
   data() {
     return {
       bookObj: {
-        // 参数名提前和后台的参数名对上-发送请求就不用再次对接了
         bookname: "",
         author: "",
         publisher: "",
       },
-      bookname: "",
+      disabled: false,
     };
   },
+
+  mounted() {},
+
   methods: {
-    addBook() {
+    getList(params = {}) {
+      this.$axios({
+        url: "/api/getbooks",
+        params: params,
+      }).then((res) => {
+        this.list = res.data.data;
+      });
+    },
+    addFn(obj) {
+      this.$refs.addbook.disabled = true;
       this.$axios({
         url: "/api/addbook",
         method: "POST",
         data: {
-          ...this.bookObj,
+          ...obj,
+          appkey: "7250d3eb-18e1-41bc-8bb2-11483665535a",
         },
       }).then((res) => {
-        console.log(res);
+        this.$refs.addbook.disabled = false;
+        // this.$refs.addbook.clear();
+        alert(res.data.msg);
+        if (res.data.status == 200 || res.data.status == 201) {
+          this.getList();
+        }
       });
     },
   },
