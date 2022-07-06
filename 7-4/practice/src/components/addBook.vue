@@ -46,10 +46,12 @@ h4 {
   background: blue;
 }
 #all {
+  margin: auto;
   margin-top: 10px;
   border: 2px solid skyblue;
   box-shadow: 10px 5px 5px;
   height: 130px;
+  width: 700px;
 }
 button {
   width: 50px;

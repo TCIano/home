@@ -32,5 +32,6 @@ input {
   height: 20px;
   border: 1px solid blue;
   padding-left: 10px;
+  margin-left: 176px;
 }
 </style>

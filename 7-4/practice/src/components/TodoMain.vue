@@ -1,6 +1,6 @@
 <template>
   <ul class="todo-list">
-    <!-- completed: 完成的类名 根据复选框的选中与否来判断类名的添加-->
+    <!-- completed: 完成的类名 -->
     <li :class="{ completed: item.isDone }" v-for="item in arr" :key="item.id">
       <div class="view">
         <input class="toggle" type="checkbox" v-model="item.isDone" />
@@ -13,17 +13,10 @@
 
 <script>
 export default {
+  props: ["arr"],
   methods: {
     del(id) {
-      //传递给父组件,拿到 id
-      this.$emit("del", id);
-    },
-  },
-  //引入父组件的数组元素
-  props: {
-    arr: {
-      type: Array,
-      default: () => [],
+      this.$emit("delList", id);
     },
   },
 };
