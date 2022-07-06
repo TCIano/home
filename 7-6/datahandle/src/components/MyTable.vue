@@ -22,7 +22,9 @@
             <slot name="age" :row="item"></slot>
           </td>
           <td>
-            <slot name="img" :row="item"></slot>
+            <slot name="eleA" :row="item" v-if="item.type == 0"></slot>
+            <slot name="eleImg" :row="item" v-else-if="item.type == 1"></slot>
+            <slot name="eleTxt" :row="item" v-else></slot>
           </td>
         </tr>
       </thead>

@@ -10,7 +10,13 @@
       <template v-slot:age="scoped">
         {{ scoped.row.name }}
       </template>
-      <template v-slot:img="scoped">
+      <template v-slot:eleA="scoped">
+        <a :href="scoped.row.headImgUrl">{{ scoped.row.headImgUrl }}</a>
+      </template>
+      <template v-slot:eleImg="scoped">
+        <img :src="scoped.row.headImgUrl" alt="" />
+      </template>
+      <template v-slot:eleTxt="scoped">
         {{ scoped.row.headImgUrl }}
       </template>
     </MyTableVue>
