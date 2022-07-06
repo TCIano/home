@@ -8,8 +8,9 @@
 
 <script>
 import myHed from './components/myHed.vue'
-// import myfoot from './components/myfoot.vue'
+import myfoot from './components/myfoot.vue'
 // import axios from 'axios'
+// axios.defaults.baseURL = "http://www.liulongbin.top:3006/";
 export default {
   components: {
     myHed,

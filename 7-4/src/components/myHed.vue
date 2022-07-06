@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import axios from "axios";
-axios.defaults.baseURL = "http://123.57.109.30:3006";
+// import axios from "axios";
+// axios.defaults.baseURL = "http://123.57.109.30:3006";
 export default {
   data() {
     return {
@@ -74,8 +74,8 @@ export default {
     };
   },
   mounted() {
-    axios({
-      url: "http://www.liulongbin.top:3006/api/getbooks",
+    this.$axios({
+      url: "/api/getbooks",
     }).then((res) => {
       this.list = res.data.data;
     });
@@ -85,19 +85,20 @@ export default {
   methods: {
     //添加
     sendFn() {
-        axios({
-        url: 'http://www.liulongbin.top:3006/api/addbook',
+        this.$axios({
+        url: '/api/addbook',
         method: 'POST',
         data: {
           ...this.bookObj
        },
         }).then(res => {
-      console.log(res);
+          console.log(res);
+      // alert(res);
     });
     },
     findFn() {
-      axios({
-        url: "http://www.liulongbin.top:3006/api/getbooks",
+      this.$axios({
+        url: "/api/getbooks",
         params: {
         bookname:this.bName
       }
@@ -108,7 +109,7 @@ export default {
     // /api/delbook
     delFn(id) {
       console.log(id);//当前点击的id
-      axios({
+     this.$axios({
         url: "http://www.liulongbin.top:3006/api/delbook",
         params: {
           id:id
