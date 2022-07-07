@@ -28,7 +28,7 @@ export default {
             }
         },
         number: {
-            // el:自定义指令所在的标签    binding:标签的集合    vnode:虚拟DOM  
+            // el:自定义指令所在的标签    binding:标签的集合    vnode:虚拟节点  
             inserted(el, binding, vnode){
                 console.log(binding.expression);  // 返回具体的表达式
                 el.value = el.value.replace(/[^\d.]/g, "")
