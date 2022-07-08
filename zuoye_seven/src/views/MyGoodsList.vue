@@ -47,8 +47,12 @@
           <button
             class="btn btn-danger btn-sm"
             @click="removeBtn(scope.row.id)"
+            style="margin-right: 8px"
           >
             删除
+          </button>
+          <button class="btn btn-success btn-sm" v-permission="'ok'">
+            编辑
           </button>
         </td>
       </template>
