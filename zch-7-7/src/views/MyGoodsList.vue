@@ -46,6 +46,7 @@
           <button
             class="btn btn-danger btn-sm"
             @click="removeBtn(scope.row.id)"
+            v-permission="'test'"
           >
             删除
           </button>
