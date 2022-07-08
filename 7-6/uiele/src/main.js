@@ -1,0 +1,169 @@
+import { createApp } from "createApp";
+import {
+  Pagination,
+  Dialog,
+  Autocomplete,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup,
+  Input,
+  InputNumber,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup,
+  Switch,
+  Select,
+  Option,
+  OptionGroup,
+  Button,
+  ButtonGroup,
+  Table,
+  TableColumn,
+  DatePicker,
+  TimeSelect,
+  TimePicker,
+  Popover,
+  Tooltip,
+  Breadcrumb,
+  BreadcrumbItem,
+  Form,
+  FormItem,
+  Tabs,
+  TabPane,
+  Tag,
+  Tree,
+  Alert,
+  Slider,
+  Icon,
+  Row,
+  Col,
+  Upload,
+  Progress,
+  Spinner,
+  Badge,
+  Card,
+  Rate,
+  Steps,
+  Step,
+  Carousel,
+  CarouselItem,
+  Collapse,
+  CollapseItem,
+  Cascader,
+  ColorPicker,
+  Transfer,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Footer,
+  Timeline,
+  TimelineItem,
+  Link,
+  Divider,
+  Image,
+  Calendar,
+  Backtop,
+  PageHeader,
+  CascaderPanel,
+  Loading,
+  MessageBox,
+  Message,
+  Notification,
+} from "element-ui";
+
+createApp.use(Pagination);
+createApp.use(Dialog);
+createApp.use(Autocomplete);
+createApp.use(Dropdown);
+createApp.use(DropdownMenu);
+createApp.use(DropdownItem);
+createApp.use(Menu);
+createApp.use(Submenu);
+createApp.use(MenuItem);
+createApp.use(MenuItemGroup);
+createApp.use(Input);
+createApp.use(InputNumber);
+createApp.use(Radio);
+createApp.use(RadioGroup);
+createApp.use(RadioButton);
+createApp.use(Checkbox);
+createApp.use(CheckboxButton);
+createApp.use(CheckboxGroup);
+createApp.use(Switch);
+createApp.use(Select);
+createApp.use(Option);
+createApp.use(OptionGroup);
+createApp.use(Button);
+createApp.use(ButtonGroup);
+createApp.use(Table);
+createApp.use(TableColumn);
+createApp.use(DatePicker);
+createApp.use(TimeSelect);
+createApp.use(TimePicker);
+createApp.use(Popover);
+createApp.use(Tooltip);
+createApp.use(Breadcrumb);
+createApp.use(BreadcrumbItem);
+createApp.use(Form);
+createApp.use(FormItem);
+createApp.use(Tabs);
+createApp.use(TabPane);
+createApp.use(Tag);
+createApp.use(Tree);
+createApp.use(Alert);
+createApp.use(Slider);
+createApp.use(Icon);
+createApp.use(Row);
+createApp.use(Col);
+createApp.use(Upload);
+createApp.use(Progress);
+createApp.use(Spinner);
+createApp.use(Badge);
+createApp.use(Card);
+createApp.use(Rate);
+createApp.use(Steps);
+createApp.use(Step);
+createApp.use(Carousel);
+createApp.use(CarouselItem);
+createApp.use(Collapse);
+createApp.use(CollapseItem);
+createApp.use(Cascader);
+createApp.use(ColorPicker);
+createApp.use(Transfer);
+createApp.use(Container);
+createApp.use(Header);
+createApp.use(Aside);
+createApp.use(Main);
+createApp.use(Footer);
+createApp.use(Timeline);
+createApp.use(TimelineItem);
+createApp.use(Link);
+createApp.use(Divider);
+createApp.use(Image);
+createApp.use(Calendar);
+createApp.use(Backtop);
+createApp.use(PageHeader);
+createApp.use(CascaderPanel);
+
+createApp.use(Loading.directive);
+
+createApp.prototype.$loading = Loading.service;
+createApp.prototype.$msgbox = MessageBox;
+createApp.prototype.$alert = MessageBox.alert;
+createApp.prototype.$confirm = MessageBox.confirm;
+createApp.prototype.$prompt = MessageBox.prompt;
+createApp.prototype.$notify = Notification;
+createApp.prototype.$message = Message;
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import App from "./App.createApp";
+createApp.use(ElementUI);
+createApp(App).mount("#app");

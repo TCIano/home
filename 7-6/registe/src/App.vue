@@ -18,7 +18,7 @@
         </template>
         <template v-slot:vaild>
           <input type="number" name="" id="" />
-          <button>验证码</button>
+          <button class="btn">验证码</button>
         </template>
         <!-- 登录页面 -->
       </component>
@@ -53,7 +53,7 @@ export default {
   width: 500px;
   height: 600px;
   padding-top: 20px;
-  background-color: #ccc;
+  background-color: rgb(235, 223, 223);
 }
 a:hover {
   border-bottom: 3px solid skyblue;
@@ -73,5 +73,11 @@ a {
 input {
   height: 20px;
   border-radius: 5px;
+}
+.btn {
+  width: 100px;
+  height: 30px;
+  background: skyblue;
+  color: black;
 }
 </style>
