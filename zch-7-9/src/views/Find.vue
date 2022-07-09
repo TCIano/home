@@ -3,10 +3,15 @@
     <!-- <p>推荐</p>
     <p>排行榜</p>
     <p>歌单</p> -->
-    <div class="nav_main">
+    <!-- <div class="nav_main">
       <router-link to="/find/recommend">推荐</router-link>
       <router-link to="/find/ranking">排行榜</router-link>
       <router-link to="/find/songlist">歌单</router-link>
+    </div> -->
+        <div class="footer_wrap">
+      <span @click="btn('/find', 'Find')">发现音乐</span>
+      <span @click="btn('/my', 'My')">我的音乐</span>
+      <span @click="btn('/part', 'Part')">朋友</span>
     </div>
 
     <div style="1px solid red;">

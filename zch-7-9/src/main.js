@@ -16,9 +16,9 @@ Vue.use(VueRouter)
 // 4. 规则数组
 const routes = [
   {path: '/', redirect: "/find"},
-  { path: '/find',component: Find},
-  { path: '/my',component: My},
-  { path: '/part',component: Part},
+  { path: '/find', name: "Find", component: Find},
+  { path: '/my', name: "My", component: My},
+  { path: '/part', name: "Part", component: Part},
   {path: '*', component: NotFound}
 ]
 // 5. 生成路由对象
