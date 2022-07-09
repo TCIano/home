@@ -11,7 +11,8 @@
         <div class="footer_wrap">
       <span @click="btn('/find', 'Find')">发现音乐</span>
       <span @click="btn('/my', 'My')">我的音乐</span>
-      <span @click="btn('/part', 'Part')">朋友</span>
+      <span @click="oneBtn">朋友-小传</span>
+      <span @click="twoBtn">朋友-小智</span>
     </div>
 
     <div style="1px solid red;">
@@ -21,7 +22,32 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    btn(targetPath, targetName){
+      this.$router.push({
+        // path: targetPath,
+        name: targetName,
+      })
+    },
+    oneBtn(){
+      this.$router.push({
+        name: 'Part',
+        params: {
+          username: '小传'
+        }
+      })
+    },
+    twoBtn(){
+            this.$router.push({
+        name: 'Part',
+        query: {
+          username: '小智'
+        }
+      })
+    }
+  }
+};
 </script>
 
 <style scoped>
