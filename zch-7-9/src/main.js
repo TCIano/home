@@ -7,6 +7,8 @@ import NotFound from '@/views/NotFound.vue'
 import Recommend from '@/views/Second/Recommend'
 import Ranking from '@/views/Second/Ranking'
 import SongList from '@/views/Second/SongList'
+import More from '@/views/Second/More.vue'
+import Test from '@/views/Second/Test.vue'
 // 目标: vue-router基础使用
 // 1. 下载vue-router  (yarn add vue-router)
 // 2. 引入
@@ -20,7 +22,11 @@ const routes = [
     children: [
       {path: 'recommend', component: Recommend},
       {path: 'ranking', component: Ranking},
-      {path: 'songList', component: SongList},
+      {path: 'songList', component: SongList,
+        children: [
+          {path: 'more', component: More},
+          {path: 'test', component: Test},
+        ]},
     ]
 },
   { path: '/my', name: "My", component: My},

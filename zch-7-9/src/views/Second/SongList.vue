@@ -5,6 +5,7 @@
     <p>歌单</p> -->
     <div class="nav_main">
       <router-link to="/find/songlist/more">歌单</router-link>
+      <router-link to="/find/songlist/test">更多</router-link>
     </div>
 
     <div style="1px solid red;">
