@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr1 = [{a:100}, {a: 20}, {a:-10}]
+    const sum = arr1.reduce((pre,curr) => {
+    return pre+curr.a
+    },0)
+    console.log(sum) // 110
+
+
+
+    let arr = 'asdfasdasdfsdfasfsadfasdf'
+    let arr2 = arr.split('')
+    console.log(arr2);
+    let countedNames = arr2.reduce(function (allNames, name) {
+    if (name in allNames) {
+        allNames[name]++
+    }
+    else {
+        allNames[name] = 1
+    }
+    return allNames
+    }, {})
+    console.log(countedNames);   // {a: 6, s: 7, d: 6, f: 6}
+</script>
+</html>
