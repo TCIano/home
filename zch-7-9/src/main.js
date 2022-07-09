@@ -38,7 +38,15 @@ const router = new VueRouter({
   routes,
   // mode: 'history',
 })
-
+const islogin = false;
+router.beforeEach((to, from, next)=>{
+  if(to.path === "/my" && !islogin){
+    alert('请登录')
+    next(false)
+  }else{
+    next()
+  }
+})
 
 Vue.config.productionTip = false
 
