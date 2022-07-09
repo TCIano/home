@@ -68,7 +68,6 @@
           >
             普通
           </button>
-
         </td>
       </template>
     </Table>
@@ -85,7 +84,7 @@ export default {
     return {
       list: [],
       people: ['admin', 'add1', 'pink'],
-      arr:[1,2,3]
+      arr: [1, 2, 3],
     };
   },
   created() {
@@ -117,17 +116,13 @@ export default {
   },
   directives: {
     jin: {
-      
       inserted(el, binding, vnode) {
-        vnode.context.people=binding.expression
-        console.log(el);
-        console.log(binding);
-        console.log(vnode);
+        vnode.context.people = binding.expression;
         if (vnode.context.people.includes('admin')) {
           el.style.display = 'block';
         } else if (vnode.context.people.includes('add')) {
           el.style.backgroundColor = 'green';
-        } else  {
+        } else {
           el.style.backgroundColor = 'black';
         }
       },
