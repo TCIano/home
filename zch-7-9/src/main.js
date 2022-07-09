@@ -16,7 +16,13 @@ Vue.use(VueRouter)
 // 4. 规则数组
 const routes = [
   {path: '/', redirect: "/find"},
-  { path: '/find', name: "Find", component: Find},
+  { path: '/find', name: "Find", component: Find,
+    children: [
+      {path: 'recommend', component: Recommend},
+      {path: 'ranking', component: Ranking},
+      {path: 'songList', component: SongList},
+    ]
+},
   { path: '/my', name: "My", component: My},
   { path: '/part', name: "Part", component: Part},
   {path: '*', component: NotFound}
