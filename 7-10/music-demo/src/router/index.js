@@ -33,6 +33,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/play",
+    component: Play,
+  },
 ];
 
 const router = new VueRouter({

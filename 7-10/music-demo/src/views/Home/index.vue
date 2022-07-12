@@ -12,7 +12,7 @@
     </van-grid>
     <!-- 最新音乐 -->
     <van-cell class="title" title="最佳匹配" />
-    <van-cell
+    <!-- <van-cell
       v-for="item in newSongList"
       :key="item.id"
       :label="
@@ -27,12 +27,26 @@
       <template>
         <van-icon color="#000" name="play-circle-o" size="28" />
       </template>
-    </van-cell>
+    </van-cell> -->
+    <SongItem
+      v-for="item in newSongList"
+      :key="item.id"
+      :author="
+        `${(item.song &&
+          item.song.artists &&
+          item.song.artists[0] &&
+          item.song.artists[0].name) ||
+          '未知歌手'}`
+      "
+      :name="item.name"
+      :id="item.id"
+    ></SongItem>
   </div>
 </template>
 
 <script>
 import { getRecommendListApi, getNewSongListApi } from "@/api/index.js";
+import SongItem from "@/components/SongItem.vue";
 console.log(getNewSongListApi());
 console.log(getRecommendListApi());
 export default {
@@ -41,6 +55,9 @@ export default {
       recommendList: [], // 推荐歌单
       newSongList: [], //最新歌曲
     };
+  },
+  components: {
+    SongItem,
   },
   created() {
     //获取列表的函数
